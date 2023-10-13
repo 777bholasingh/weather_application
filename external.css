@@ -16,7 +16,7 @@ height: min-content;
 background-image: url("weather-app-img/images/weather.jpg");
 background-size:cover;
 background-repeat: no-repeat; 
-
+height: 100vh;
 
 }
 .box{
