@@ -1,21 +1,26 @@
 
-const inputbox=document.querySelector(".inpt");
-let searchBtn = document.getElementById("searchBtn");
-const  weatherimg=document.querySelector(".weather-img");
- var  temprature=document.querySelector('.temp');
+const inputBox=document.querySelector('.inpt');
+const searchBtn = document.getElementById('searchBtn');
+const  weatherimg=document.querySelector('.weather-img');
+ const  temprature=document.querySelector('.temp');
 const description=document.querySelector('.description');
-const  humid=document.querySelector(".humidity");
-const   wind=document.querySelector(".windspeed");
-const location_not_found=document.querySelector(".location-not-found");
-const  weatherbody=document.querySelector(".weather");
-const api_key = "0bbc26b5869812c4d3261c7dd9ae6e19";
-    const url = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+const  humid=document.querySelector('.humidity');
+const   wind=document.querySelector('.windspeed');
+const location_not_found=document.querySelector('.location-not-found');
+const  weatherbody=document.querySelector('.weather');
 
 
-async  function checkweather(city){
-  
-     const response = await fetch(url+city+`&appid=${api_key}`);
-            const wdata= await response.json();
+
+async  function checkWeather(city){
+  // const api_key = "4a277270e895f0608f89708b77ad93db";
+  //   const url = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+  //    const response = await fetch(url+city+`&appid=${api_key}`);
+  //           const wdata= await response.json();
+  //    console.log(wdata);
+  const api_key = "0bbc26b5869812c4d3261c7dd9ae6e19";
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`;
+
+    const wdata = await fetch(`${url}`).then(response => response.json());
     console.log(wdata);
     if(wdata.cod===`404`)
   {   alert("You have Not Entered Correct City Name!!")
@@ -47,17 +52,16 @@ async  function checkweather(city){
             weatherimg.src="weather-app-img/images/haze.png";}
                      
       
-
+          }
 
          
-        
+        searchBtn.addEventListener('click',()=>{
 
-};
+          checkWeather(inputBox.value) ; 
+  
+        });
 
 
 
 
-  searchBtn.addEventListener("click", ()=>{
-checkweather(inputbox.value);
- });
 
